@@ -1,10 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExampleFormModule } from './example-form/example-form.module';
+import { ExampleListModule } from './example-list/example-list.module';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  {
+    path: 'list',
+    loadChildren: () =>
+      import('./example-list/example-list.module').then(
+        (m) => ExampleListModule,
+      ),
+  },
+  {
+    path: 'form',
+    loadChildren: () =>
+      import('./example-form/example-form.module').then(
+        (m) => ExampleFormModule,
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
