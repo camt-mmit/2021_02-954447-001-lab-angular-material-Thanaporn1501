@@ -1,0 +1,111 @@
+<div class="container mt-3">
+  <ng-container [formGroup]="formGroup">
+    <div class="cmp-fields-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          type="text"
+          formControlName="givenName"
+          (blur)="onTouched()"
+          matInput
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Family Name</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          type="text"
+          formControlName="familyName"
+          class="form-control"
+          (blur)="onTouched()"
+          matInput
+        />
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <button
+        mat-flat-button
+        class="btn-add"
+        type="button"
+        (click)="onAddTelephone($event)"
+      >
+        <mat-icon>phone</mat-icon> Add
+      </button>
+    </div>
+
+    <div formArrayName="phoneNumbers">
+      <ng-container
+        *ngFor="let fgPhoneNumber of fgPhoneNumbers().controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-2 d-flex justify-content-between mt-2">
+            <label> Phone {{ i + 1 }} </label>
+            <span>::</span>
+          </div>
+          <div class="col-lg-10">
+            <div class="d-flex">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="value"
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    id="basic-addon2"
+                    (click)="onDeletePhone(i)"
+                    ><mat-icon>delete_forever</mat-icon></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="mb-3">
+      <button mat-flat-button class="btn-add" (click)="onAddEmail($event)">
+        <mat-icon>email</mat-icon> Add
+      </button>
+    </div>
+    <div formArrayName="emailAddresses">
+      <ng-container
+        *ngFor="
+          let fgEmailAddress of fgEmailAddresses().controls;
+          let i = index
+        "
+        [formGroupName]="i"
+      >
+        <div class="row">
+          <div class="col-lg-2 d-flex justify-content-between mt-2">
+            <label> Email {{ i + 1 }} </label>
+            <span>::</span>
+          </div>
+          <div class="col-lg-10">
+            <div class="d-flex">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="value"
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    id="basic-addon2"
+                    (click)="onDeleteEmail(i)"
+                    ><mat-icon>delete_forever</mat-icon></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,22 @@
+form {
+  width: 600px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+.cmp-fields-row {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+
+  & > * {
+    flex: 1 0 auto;
+  }
+}
+.btn-add {
+  background-color: #7382d4;
+  color: #e7e7e7;
+}

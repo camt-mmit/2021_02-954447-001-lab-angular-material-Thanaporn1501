@@ -1,0 +1,20 @@
+<mat-nav-list *cdkPortal>
+  <a mat-list-item routerLink="list">List</a>
+  <a mat-list-item routerLink="createContact">Create</a>
+  <a mat-list-item href="https://contacts.google.com/">
+    <mat-icon class="align-middle">launch</mat-icon
+    ><span class="mt-2">Web</span>
+  </a>
+</mat-nav-list>
+
+<ng-container [ngSwitch]="tokenReady$ | async">
+  <div *ngSwitchCase="false">
+    <button mat-stroked-button class="btn btn-login">
+      <a [href]="authorizationLinks$ | async"
+        ><mat-icon>login </mat-icon> Login</a
+      >
+    </button>
+  </div>
+
+  <router-outlet *ngSwitchCase="true"></router-outlet>
+</ng-container>
