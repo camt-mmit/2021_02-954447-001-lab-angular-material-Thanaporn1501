@@ -1,6 +1,6 @@
 import { Portal } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, debounceTime, Subject } from 'rxjs';
+import { BehaviorSubject, debounceTime } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

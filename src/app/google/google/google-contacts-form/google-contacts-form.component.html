@@ -1,0 +1,17 @@
+<mat-toolbar>Contact Form</mat-toolbar>
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <app-google-contacts-control
+    formControlName="personResource"
+  ></app-google-contacts-control>
+  <div>{{ errorMessage }}</div>
+
+  <div class="cmp-action-panel">
+    <button mat-flat-button color="primary" type="submit">
+      <mat-icon>save</mat-icon> Save
+    </button>
+    <button mat-flat-button color="warn" type="submit" (click)="onCancel()">
+      <mat-icon>cancel</mat-icon> Cancel
+    </button>
+  </div>
+</form>
